@@ -1,7 +1,8 @@
 package dev.albertocaro.shoppinglist.data.api.models
 
-data class ProductResponse(
-    val id: Long,
+import com.google.gson.annotations.SerializedName
 
-    val name: String,
+data class ProductResponse(
+    @SerializedName("id") val id: Long,
+    @SerializedName("name") val name: String,
 )

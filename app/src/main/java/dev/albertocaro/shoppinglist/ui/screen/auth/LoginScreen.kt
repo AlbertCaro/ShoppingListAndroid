@@ -33,12 +33,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import dev.albertocaro.shoppinglist.ui.navigation.app.AppRoutes
 import dev.albertocaro.shoppinglist.ui.navigation.app.LocalAppNavController
 
 @Composable
 @Preview
 fun LoginScreen(
-    viewModel: LoginViewModel = hiltViewModel()
+    viewModel: AuthViewModel = hiltViewModel()
 ) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -120,7 +121,10 @@ fun LoginScreen(
             LoginUiState.Initial -> {}
             is LoginUiState.Success -> {
                 if (state.result) {
-                    snackbarHostState.showSnackbar("Bienvenido!")
+                    appNavController.navigate(AppRoutes.HOME) {
+                        popUpTo(0) { inclusive = false }
+                        launchSingleTop = true
+                    }
 
                     return@LaunchedEffect
                 }

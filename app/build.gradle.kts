@@ -75,4 +75,6 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     kapt(libs.androidx.room.compiler)
     annotationProcessor(libs.androidx.room.room.compiler)
+
+    implementation(libs.androidx.datastore.preferences)
 }
